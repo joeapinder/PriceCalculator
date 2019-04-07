@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joe.pinder\source\repos\pricecalculator\pricecalculator\discounts\nodiscount.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using PriceCalculator.Models;
+
+namespace PriceCalculator.Discounts
+{
+    /// &lt;summary&gt;
+    /// Implementation of the null object design pattern
+    /// &lt;/summary&gt;
+    /// &lt;seealso cref=&quot;global::PriceCalculator.SpecialOffers.IDiscount&quot; /&gt;
+    public class NoDiscount : IDiscount
+    {
+        public DiscountType DiscountType =&gt; DiscountType.SingleItem;
+
+        public Discount GetDiscount(BasketItem item)
+        {
+            return new Discount(0, null);
+        }
+
+        public Discount GetGroupDiscount(BasketItem item, List&lt;BasketItem&gt; allBasketItems)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[13,45,13,68,1],[16,9,16,10,1],[17,13,17,42,1],[18,9,18,10,1],[21,9,21,10,0],[22,13,22,49,0]]);
+    </script>
+  </body>
+</html>

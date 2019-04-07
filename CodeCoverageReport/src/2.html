@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joe.pinder\source\repos\pricecalculator\pricecalculator\discounts\percentagediscountforpurchasingotheritems.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using PriceCalculator.Helpers;
+using PriceCalculator.Models;
+
+namespace PriceCalculator.Discounts
+{
+    /// &lt;summary&gt;
+    /// Configurable offer which can be reused as it accepts configurable parameters in its constructor.
+    /// &lt;/summary&gt;
+    /// &lt;seealso cref=&quot;global::PriceCalculator.SpecialOffers.PercentageDiscount&quot; /&gt;
+    /// &lt;seealso cref=&quot;global::PriceCalculator.SpecialOffers.IDiscount&quot; /&gt;
+    public class PercentageDiscountForPurchasingOtherItems: PercentageDiscount, IDiscount
+    {
+        private string _otherItemName;
+        private int _quantity;
+        
+        public PercentageDiscountForPurchasingOtherItems(int percentageDiscount, string otherItemName, int quantity):base(percentageDiscount)
+        {
+            this._otherItemName = otherItemName;
+            this._quantity = quantity;        
+        }
+
+        public DiscountType DiscountType =&gt; DiscountType.GroupItem;
+
+        public Discount GetGroupDiscount(BasketItem item, List&lt;BasketItem&gt; allBasketItems)
+        {
+            var count = allBasketItems.Count(c =&gt; c.GoodsItem.Name == _otherItemName &amp;&amp; !c.AlreadyUsedForAPromo);
+            if (count &gt;= _quantity)
+            {
+              MarkItemsInBasketAsUsedForAPromotion(allBasketItems);
+               return base.GetDiscount(item);
+            }
+            return new NoDiscount().GetDiscount(item);
+        }
+
+        public Discount GetDiscount(BasketItem item)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// &lt;summary&gt;
+        /// Marks the items in basket as used for a promotion.  This stops the same items being used in more than 1 promotion.  The requirements don&#39;t specify I need to do this, so I have made an assumption.  Its standard practice
+        /// when ever you see a promotion that items cant be used in more than 1 promotion.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;allBasketItems&quot;&gt;All basket items.&lt;/param&gt;
+        private void MarkItemsInBasketAsUsedForAPromotion(List&lt;BasketItem&gt; allBasketItems)
+        {
+            allBasketItems.Where(c =&gt; c.GoodsItem.Name == _otherItemName &amp;&amp; !c.AlreadyUsedForAPromo).Take(_quantity)
+                .Update(c =&gt; c.AlreadyUsedForAPromo = true);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,118,19,142,1],[20,9,20,10,1],[21,13,21,49,1],[22,13,22,39,1],[23,9,23,10,1],[25,45,25,67,1],[28,9,28,10,1],[29,13,29,51,1],[29,51,29,112,1],[29,112,29,114,1],[29,13,29,114,1],[30,13,30,36,1],[31,13,31,14,1],[32,15,32,68,1],[33,16,33,46,1],[35,13,35,55,1],[36,9,36,10,1],[39,9,39,10,1],[40,13,40,49,1],[49,9,49,10,1],[50,13,50,39,1],[50,39,50,100,1],[50,100,51,30,1],[51,30,51,59,1],[51,59,51,61,1],[50,13,51,61,1],[52,9,52,10,1]]);
+    </script>
+  </body>
+</html>

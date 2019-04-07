@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joe.pinder\source\repos\pricecalculator\pricecalculator\models\basket.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using PriceCalculator.Discounts;
+
+namespace PriceCalculator.Models
+{
+    public class Basket
+    {
+        private List&lt;Discount&gt; _discounts;
+        private decimal? _subTotal;
+        private decimal? _total;
+        private List&lt;string&gt; _messages;
+        public Basket(List&lt;BasketItem&gt; items)
+        {
+            Items = items;
+        }
+
+        public List&lt;BasketItem&gt; Items { get;}
+    
+
+        /// &lt;summary&gt;
+        /// Finalises the basket, must be called before any of the totals or messages are requested.
+        /// This applies any discounts.  This is done as one routine, and not done as items are added to the basket. Going forward if there was a requirement to show running totals as items are
+        /// added to the basket, it would make the code more complex as when items are also removed you then need to then find any other item in the basket which may have a discount based on that item, and recalculate for
+        /// example.  I would wait for a requirement for discounts to be calculated as part of a running total before I added that functionality.
+        /// discounts
+        /// &lt;/summary&gt;
+        public void FinaliseBasket()
+        {
+            _discounts = new List&lt;Discount&gt;();
+            foreach(var item in Items)
+            {
+                var calculator = item.Discount;
+                if(calculator.DiscountType == DiscountType.SingleItem)
+                {
+                    _discounts.Add(calculator.GetDiscount(item));
+                }
+                else if(calculator.DiscountType == DiscountType.GroupItem)
+                {
+                    _discounts.Add(calculator.GetGroupDiscount(item, this.Items));
+                }
+            }
+            SumTotals();
+            BuildMessages();
+        }
+
+        private void SumTotals()
+        {
+            _subTotal = Items.Sum(c =&gt; c.GoodsItem.Price);
+            _total = Items.Sum(c =&gt; c.GoodsItem.Price) - _discounts.Sum(c =&gt; c.DiscountAmount);
+        }
+
+        private void BuildMessages()
+        {
+            if (_discounts.All(c =&gt; c.Message == null))
+            {
+                _messages =  new List&lt;string&gt;() { &quot;(No offers available)&quot; };
+            }
+            else
+            {
+                _messages = _discounts.Select(c =&gt; c.Message).Where(c =&gt; c != null).ToList();
+            }
+        }
+
+        public decimal SubTotal
+        {
+            get
+            {
+                if (_subTotal.HasValue)
+                {
+                    return _subTotal.Value;
+                }
+                throw new InvalidOperationException(&quot;FinaliseBasket must be called before you can call SubTotal&quot;);
+                
+            }
+        }
+
+        public decimal Total
+        {
+            get
+            {
+                if (_total.HasValue)
+                {
+                    return _total.Value;
+                }
+                throw new InvalidOperationException(&quot;FinaliseBasket must be called before you can call Total&quot;);
+
+            }
+        }
+
+        public List&lt;string&gt; Messages
+        {
+            get
+            {
+                if (_messages == null)
+                {
+                    throw new InvalidOperationException(&quot;FinaliseBasket must be called before you can call Messages&quot;);
+                }
+                return _messages;
+            }
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,46,1],[15,9,15,10,1],[16,13,16,27,1],[17,9,17,10,1],[19,41,19,45,1],[30,9,30,10,1],[31,13,31,47,1],[32,13,32,20,1],[32,21,32,29,1],[32,30,32,32,1],[32,33,32,38,1],[33,13,33,14,1],[34,17,34,48,1],[35,17,35,71,1],[36,17,36,18,1],[37,21,37,66,1],[38,17,38,18,1],[39,22,39,75,1],[40,17,40,18,1],[41,21,41,83,1],[42,17,42,18,1],[43,13,43,14,1],[44,13,44,25,1],[45,13,45,29,1],[46,9,46,10,1],[49,9,49,10,1],[50,13,50,40,1],[50,40,50,57,1],[50,57,50,59,1],[50,13,50,59,1],[51,13,51,37,1],[51,37,51,54,1],[51,54,51,78,1],[51,78,51,94,1],[51,94,51,96,1],[51,13,51,96,1],[52,9,52,10,1],[55,9,55,10,1],[56,13,56,37,1],[56,37,56,54,1],[56,54,56,56,1],[56,13,56,56,1],[57,13,57,14,1],[58,17,58,77,1],[59,13,59,14,1],[61,13,61,14,1],[62,17,62,52,1],[62,52,62,61,1],[62,61,62,74,1],[62,74,62,83,1],[62,83,62,94,1],[62,17,62,94,1],[63,13,63,14,1],[64,9,64,10,1],[69,13,69,14,1],[70,17,70,40,1],[71,17,71,18,1],[72,21,72,44,1],[74,17,74,115,0],[76,13,76,14,1],[82,13,82,14,1],[83,17,83,37,1],[84,17,84,18,1],[85,21,85,41,1],[87,17,87,112,0],[89,13,89,14,1],[95,13,95,14,1],[96,17,96,39,1],[97,17,97,18,0],[98,21,98,119,0],[100,17,100,34,1],[101,13,101,14,1]]);
+    </script>
+  </body>
+</html>

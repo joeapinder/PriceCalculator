@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joe.pinder\source\repos\pricecalculator\pricecalculator\program.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+
+namespace PriceCalculator
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            try
+            {
+                var basket = new PriceCalculator().GetCompletedBasket(args);
+                Console.WriteLine($&quot;Subtotal: {basket.SubTotal:c}&quot;);
+                basket.Messages.ForEach(c =&gt; Console.WriteLine(c));
+                Console.WriteLine($&quot;Total: {basket.Total:c}&quot;);
+            }
+            catch (ArgumentException argEx)
+            {
+                Console.WriteLine(argEx.Message);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine(&quot;An unknown error has occurred.  Please contact support&quot;);
+            }
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,9,8,10,1],[10,13,10,14,1],[11,17,11,77,1],[12,17,12,69,1],[13,17,13,46,1],[13,46,13,66,1],[13,66,13,68,1],[13,17,13,68,1],[14,17,14,63,1],[15,13,15,14,1],[16,13,16,44,1],[17,13,17,14,1],[18,17,18,50,1],[19,13,19,14,1],[20,13,20,30,0],[21,13,21,14,0],[22,17,22,93,0],[23,13,23,14,0],[24,9,24,10,1]]);
+    </script>
+  </body>
+</html>

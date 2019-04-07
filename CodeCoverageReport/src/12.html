@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joe.pinder\source\repos\pricecalculator\pricecalculator\models\offer.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using PriceCalculator.Discounts;
+
+namespace PriceCalculator.Models
+{
+    public class Offer
+    {
+        public Offer(string goodsItemName, IDiscount discount)
+        {
+            GoodsItemName = goodsItemName;
+            Discount = discount;
+        }
+        public string GoodsItemName { get; }
+
+        public IDiscount Discount { get; }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[7,9,7,63,1],[8,9,8,10,1],[9,13,9,43,1],[10,13,10,33,1],[11,9,11,10,1],[12,39,12,43,1],[14,37,14,41,1]]);
+    </script>
+  </body>
+</html>

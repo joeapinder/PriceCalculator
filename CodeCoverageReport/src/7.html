@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joe.pinder\source\repos\pricecalculator\pricecalculator\models\basketitem.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using PriceCalculator.Discounts;
+
+namespace PriceCalculator.Models
+{
+    public class BasketItem
+    {
+        private readonly IDiscount _discount;
+        private readonly GoodsItem _goodsItem;
+        public BasketItem(GoodsItem goodsItem, IDiscount discount)
+        {
+            this._goodsItem = goodsItem;
+            this._discount = discount;
+        }
+
+        public BasketItem(GoodsItem goodsItem)
+        {
+            this._goodsItem = goodsItem;
+            this._discount = new NoDiscount();
+        }
+
+        /// &lt;summary&gt;
+        /// This property stops the same item being used in more that one applied discount.
+        /// &lt;/summary&gt;
+        /// &lt;value&gt;
+        ///   &lt;c&gt;true&lt;/c&gt; if [already used for a promo]; otherwise, &lt;c&gt;false&lt;/c&gt;.
+        /// &lt;/value&gt;
+        public bool AlreadyUsedForAPromo { get; set; }
+
+        public GoodsItem GoodsItem {
+            get { return _goodsItem; }
+        }
+
+        public IDiscount Discount
+        {
+            get
+            {
+                return _discount;
+            }
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,9,9,67,1],[10,9,10,10,1],[11,13,11,41,1],[12,13,12,39,1],[13,9,13,10,1],[15,9,15,47,1],[16,9,16,10,1],[17,13,17,41,1],[18,13,18,47,1],[19,9,19,10,1],[27,44,27,48,1],[27,49,27,53,1],[30,17,30,18,1],[30,19,30,37,1],[30,38,30,39,1],[36,13,36,14,1],[37,17,37,34,1],[38,13,38,14,1]]);
+    </script>
+  </body>
+</html>

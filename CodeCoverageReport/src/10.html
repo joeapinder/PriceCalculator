@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\users\joe.pinder\source\repos\pricecalculator\pricecalculator\discounts\percentagediscount.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using PriceCalculator.Helpers;
+using PriceCalculator.Models;
+
+namespace PriceCalculator.Discounts
+{
+    /// &lt;summary&gt;
+    /// Configurable offer which can be reused as it accepts configurable parameters in its constructor.
+    /// &lt;/summary&gt;
+    /// &lt;seealso cref=&quot;global::PriceCalculator.SpecialOffers.IDiscount&quot; /&gt;
+    public class PercentageDiscount : IDiscount
+    {
+        private int _percentageDiscount;
+        public PercentageDiscount(int percentageDiscount)
+        {
+            this._percentageDiscount = percentageDiscount;
+        }
+
+        public DiscountType DiscountType =&gt; DiscountType.SingleItem;
+
+        public Discount GetDiscount(BasketItem item)
+        {
+            return CalculatePercentageDiscount(item);
+        }
+
+        protected Discount CalculatePercentageDiscount(BasketItem item)
+        {
+            var discountAmount = item.GoodsItem.Price * (_percentageDiscount / 100.0m);
+            return new Discount(discountAmount,
+                $&quot;{item.GoodsItem.Name} {_percentageDiscount}% off: {HelperMethods.FormatAmount(discountAmount)}&quot;);
+        }
+
+        public Discount GetGroupDiscount(BasketItem item, List&lt;BasketItem&gt; allBasketItems)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,58,1],[16,9,16,10,1],[17,13,17,59,1],[18,9,18,10,1],[20,45,20,68,1],[23,9,23,10,1],[24,13,24,54,1],[25,9,25,10,1],[28,9,28,10,1],[29,13,29,88,1],[30,13,31,116,1],[32,9,32,10,1],[35,9,35,10,1],[36,13,36,49,1]]);
+    </script>
+  </body>
+</html>

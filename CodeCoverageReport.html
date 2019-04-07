@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html class="main">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>CodeCoverageReport</title>
+
+    <script type="text/javascript" src="CodeCoverageReport/js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="CodeCoverageReport/js/jquery.ui.custom-1.8.7.min.js"></script>
+    <script type="text/javascript" src="CodeCoverageReport/js/jquery.dynatree-1.2.4.min.js"></script>
+    <script type="text/javascript" src="CodeCoverageReport/js/jquery.cookie-1.3.1.min.js"></script>
+    <script type="text/javascript" src="CodeCoverageReport/js/jquery.splitter-1.5.1.min.js"></script>
+    <script type="text/javascript" src="CodeCoverageReport/js/dotcover.report.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="CodeCoverageReport/css/dotcover.report.css">
+    <link rel="stylesheet" type="text/css" href="CodeCoverageReport/css/dotcover.report.gen.css">
+    <link rel="stylesheet" type="text/css" href="CodeCoverageReport/css/jquery.dynatree.css">
+  </head>
+
+  <body>
+    <div class="header"><span class="title">CodeCoverageReport Coverage Report</span><span class="info">Generated: Sunday, April 07, 2019 8:04:57 PM</span></div>
+    <div class="content" id="content"><div id="coverageTree"></div><iframe id="sourceCode"></iframe></div>
+    <div class="footer">JetBrains dotCover 2018.1.4 Copyright &copy; 2010-2019 <a href="http://www.jetbrains.com/dotcover/" target="_blank">Product Homepage</a> | <a href="http://www.jetbrains.com/feedback/feedback.jsp?product=dotCover&build=4&timezone=GMT Standard Time" target="_blank">Feedback</a> | <a href="http://www.jetbrains.com/" target="_blank">Company</a></div>
+
+    <script type="text/javascript">
+      var resourceFolder = "CodeCoverageReport";
+      var blockSize = 50000;
+      block0 = [["Total",96,,,,,1],["PriceCalculator",96,0,,,,2,4],["PriceCalculator.Discounts",95,1,,,,6,3],["PriceCalculator",96,1,,,,9,3],["PriceCalculator.Models",96,1,,,,12,5],["PriceCalculator.Helpers",100,1,,,,17,2],["NoDiscount",67,2,,,,19,3],["PercentageDiscount",100,2,,,,22,5],["PercentageDiscountForPurchasingOtherItems",100,2,,,,27,5],["Program",76,2,,,,32],["PriceCalculatorConfiguration",100,2,,,,33,3],["PriceCalculator",100,2,,,,36,5],["Basket",94,2,,,,41,8],["GoodsItem",100,2,,,,49,3],["Offer",100,2,,,,52,3],["Discount",100,2,,,,55,3],["BasketItem",100,2,,,,58,5],["HelperMethods",100,2,,,,63],["ExtensionMethods",100,2,,,,64],["GetGroupDiscount(BasketItem,List&lt;BasketItem&gt;):Discount",0,3,4,21,9],["DiscountType:DiscountType",100,4,,,,65],["GetDiscount(BasketItem):Discount",100,3,4,16,9],["DiscountType:DiscountType",100,4,,,,66],["GetGroupDiscount(BasketItem,List&lt;BasketItem&gt;):Discount",100,3,10,35,9],["GetDiscount(BasketItem):Discount",100,3,10,23,9],["PercentageDiscount(int)",100,5,10,15,9],["CalculatePercentageDiscount(BasketItem):Discount",100,6,10,28,9],["DiscountType:DiscountType",100,4,,,,67],["GetDiscount(BasketItem):Discount",100,3,2,39,9],["PercentageDiscountForPurchasingOtherItems(int,string,int)",100,5,2,19,118],["MarkItemsInBasketAsUsedForAPromotion(List&lt;BasketItem&gt;):void",100,7,2,49,9,68,3],["GetGroupDiscount(BasketItem,List&lt;BasketItem&gt;):Discount",100,3,2,28,9,71,2],["Main(string[]):void",76,8,9,8,9,73,2],["PriceCalculatorConfiguration()",100,5,11,11,9],["AvailableGoodsItems:List&lt;GoodsItem&gt;",100,4,,,,75,2],["AvailableOffers:List&lt;Offer&gt;",100,4,,,,77,2],["PriceCalculator()",100,5,1,14,34],["PriceCalculator(PriceCalculatorConfiguration)",100,5,1,21,9],["GetCompletedBasket(string[]):Basket",100,3,1,29,9],["GetSelectedGoods(string[]):List&lt;GoodsItem&gt;",100,7,1,37,9,79,3],["BuildBasket(List&lt;GoodsItem&gt;):List&lt;BasketItem&gt;",100,7,1,56,9,82,2],["Messages:List&lt;string&gt;",67,4,,,,84],["SubTotal:decimal",83,4,,,,85],["Total:decimal",83,4,,,,86],["Items:List&lt;BasketItem&gt;",100,9,,,,87],["Basket(List&lt;BasketItem&gt;)",100,5,13,14,9],["SumTotals():void",100,7,13,49,9,88,4],["BuildMessages():void",100,7,13,55,9,92,4],["FinaliseBasket():void",100,3,13,30,9],["Name:string",100,9,,,,96],["Price:decimal",100,9,,,,97],["GoodsItem(string,decimal)",100,5,5,5,9],["GoodsItemName:string",100,9,,,,98],["Discount:IDiscount",100,9,,,,99],["Offer(string,IDiscount)",100,5,12,7,9],["DiscountAmount:decimal",100,4,,,,100],["Message:string",100,4,,,,101],["Discount(decimal,string)",100,5,6,7,9],["AlreadyUsedForAPromo:bool",100,9,,,,102,2],["GoodsItem:GoodsItem",100,4,,,,104],["Discount:IDiscount",100,4,,,,105],["BasketItem(GoodsItem,IDiscount)",100,5,7,9,9],["BasketItem(GoodsItem)",100,5,7,15,9],["FormatAmount(decimal):string",100,8,3,8,9],["Update&lt;T&gt;(IEnumerable&lt;T&gt;,Action&lt;T&gt;):void",100,8,8,9,9],["get",100,10,4,13,45],["get",100,10,10,20,45],["get",100,10,2,25,45],["(BasketItem):bool",100,11,2,50,39],["(BasketItem):void",100,12,2,51,30],["own coverage",100,13,2,49,9],["(BasketItem):bool",100,11,2,29,51],["own coverage",100,14,2,28,9],["own coverage",75,15,9,8,9],["(string):void",100,12,9,13,46],["get",100,10,11,31,13],["set",100,16,11,34,17],["get",100,10,11,39,17],["set",100,16,11,40,17],["(GoodsItem):bool",100,12,1,42,21],["(GoodsItem):string",100,12,1,49,154],["own coverage",100,13,1,37,9],["(Offer):bool",100,12,1,60,67],["own coverage",100,13,1,56,9],["get",67,10,13,95,13],["get",83,10,13,69,13],["get",83,10,13,82,13],["get",100,10,13,19,41],["(BasketItem):decimal",100,12,13,50,40],["(BasketItem):decimal",100,12,13,51,37],["(Discount):decimal",100,12,13,51,78],["own coverage",100,13,13,49,9],["(Discount):bool",100,12,13,56,37],["(Discount):string",100,12,13,62,52],["(string):bool",100,12,13,62,74],["own coverage",100,13,13,55,9],["get",100,10,5,10,30],["get",100,10,5,11,32],["get",100,10,12,12,39],["get",100,10,12,14,37],["get",100,10,6,15,17],["get",100,10,6,20,17],["get",100,10,7,27,44],["set",100,16,7,27,49],["get",100,10,7,30,17],["get",100,10,7,36,13]];
+      coverageData = [block0];
+    </script>
+  </body>
+</html>
